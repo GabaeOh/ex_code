@@ -3,17 +3,12 @@ package com.yojulab.study_springboot.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yojulab.study_springboot.service.CarInforsService;
@@ -23,6 +18,48 @@ import com.yojulab.study_springboot.service.CarInforsService;
 public class CarInforsController {
     @Autowired
     CarInforsService carInforsService;
+
+     @GetMapping("/exselectSearch")
+    public ModelAndView exselectSearch(@RequestParam Map params
+                            , ModelAndView modelAndView) {
+        Object result = carInforsService.exselectSearch(params);
+        modelAndView.addObject("params", params);
+        modelAndView.addObject("result", result);
+        
+        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
+        return modelAndView;
+    }
+
+    // delete with MVC
+    @PostMapping("/deleteAndSelectSearch/{UNIQUE_ID}")
+    public ModelAndView deleteAndSelectSearch(@RequestParam Map params,
+                            @PathVariable String UNIQUE_ID , ModelAndView modelAndView) {
+        Object result = carInforsService.deleteAndSelectSearch(UNIQUE_ID, params); //호출 
+        modelAndView.addObject("params", params); //modelAndView 객체에 params와 result를 추가
+        modelAndView.addObject("result", result);
+
+        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
+        return modelAndView;
+    }
+    // INSERT
+    @PostMapping("/insertAndSelectSearch")
+    public ModelAndView insertAndSelectSearch(@RequestParam Map params,
+                             ModelAndView modelAndView) {
+        Object result = carInforsService.insertAndSelectSearch(params);
+
+        modelAndView.addObject("params", params);
+        modelAndView.addObject("result", result);
+        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
+
+        return modelAndView;
+    }
+
+    @GetMapping("/insertForm")
+    public ModelAndView insertForm(@RequestParam Map params, ModelAndView modelAndView) {
+        modelAndView.setViewName("/WEB-INF/views/carinfor/InsertForm.jsp");
+        return  modelAndView;
+    }
+
 
     // @GetMapping("/selectInUID")
     // public ResponseEntity selectInUID(@RequestBody Map paramMap) {
@@ -51,41 +88,18 @@ public class CarInforsController {
     // /selectSearch?search=YEAR&words=2020
     // /exselectSearch/PARENT_COMMON_CODE_ID/
     
-    @GetMapping("/exselectSearch")
-    public ModelAndView exselectSearch(@RequestParam Map params
-                            , ModelAndView modelAndView) {
-        Object result = carInforsService.exselectSearch(params);
-        modelAndView.addObject("params", params);
-        modelAndView.addObject("result", result);
-        
-        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
-        return modelAndView;
-    }
-
-
-    // delete with MVC
-    @PostMapping("/deleteAndSelectSearch/{UNIQUE_ID}")
-    public ModelAndView deleteAndSelectSearch(@RequestParam Map params,
-                            @PathVariable String UNIQUE_ID , ModelAndView modelAndView) {
-        Object result = carInforsService.deleteAndSelectSearch(UNIQUE_ID, params);
-        modelAndView.addObject("params", params);
-        modelAndView.addObject("result", result);
-
-        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
-        return modelAndView;
-    }
-    
+   
     // create
-    @PostMapping("/InsertForm")
-    public ModelAndView insert(@RequestParam Map params,
-                            @PathVariable String UNIQUE_ID , ModelAndView modelAndView) {
+    // @PostMapping("/InsertForm")
+    // public ModelAndView insertAndSelectSearch(@RequestParam Map params,
+    //                         @PathVariable String UNIQUE_ID , ModelAndView modelAndView) {
         
-        Object result = carInforsService.insert(UNIQUE_ID, params);
-        modelAndView.addObject("params", params);
-        modelAndView.addObject("result", result);
-        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
-        return modelAndView;
-    }
+    //     Object result = carInforsService.insertAndSelectSearch(UNIQUE_ID, params);
+    //     modelAndView.addObject("params", params);
+    //     modelAndView.addObject("result", result);
+    //     modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
+    //     return modelAndView;
+    // }
 
 
     // delete with MVC
