@@ -59,12 +59,10 @@
                             <button class="btn btn-primary" type="submit" formaction="/carInfor/exselectSearch"
                                 formmethod="get">Go</button>
                         </div>
-                          
-                            <button id="insertButton" class="btn btn-primary" onclick="openInsertForm()" formaction="/carInfor/insertForm">Insert</button>
-                        </div>      
+                                              
                         <!-- Insert Form --> 
                         <div class="col-md-8">
-                            <button id="insertButton" class="btn btn-primary" formaction="/src/main/InsertForm.jsp">InsertForm</button>
+                            <button id="insertButton" class="btn btn-primary" formaction="/carInfor/insertForm">InsertForm</button>
                         </div>
                         <h2>Table</h2>
                         <table class="table">

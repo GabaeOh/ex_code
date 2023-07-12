@@ -53,6 +53,12 @@ public class CarInforsController {
 
         return modelAndView;
     }
+    // // create
+    // @PostMapping("/insert")
+    // public ResponseEntity insert(@RequestBody Map paramMap) {
+    //     Object result = carInforsService.insert(paramMap);
+    //     return ResponseEntity.ok().body(result);
+    // }
 
     @GetMapping("/insertForm")
     public ModelAndView insertForm(@RequestParam Map params, ModelAndView modelAndView) {
@@ -128,12 +134,7 @@ public class CarInforsController {
 
 
 
-    // // create
-    // @PostMapping("/insert")
-    // public ResponseEntity insert(@RequestBody Map paramMap) {
-    //     Object result = carInforsService.insert(paramMap);
-    //     return ResponseEntity.ok().body(result);
-    // }
+    
 
     // // update
     // @PutMapping("/update")
