@@ -15,7 +15,7 @@
         <div class="text-center mt-4 mb-4 h1">Insert Form</div>
     </div>
     <div class="container">
-        <form id="insertForm" action="/carInfor/insert" method="post">
+        <form id="insertForm" action="" method="post">
             <div class="mb-3">
                 <label class="form-label" for="commonCodeId">COMMON_CODE_ID:</label>
                 <input class="form-control" type="text" id="commonCodeId" name="COMMON_CODE_ID">
@@ -69,7 +69,7 @@
                 <input class="form-control" type="text" id="modifyDate" name="MODIFY_DATE">
             </div>
             <div class="text-center">
-                <button class="btn btn-primary" type="submit" formaction="/carInfor/insertAndSelectSearch">Submit</button>
+                <button class="btn btn-primary" type="submit" formaction="/carInfor/insertAndSelectSearch" method="post">Submit</button>
             </div>
         </form>
     </div>

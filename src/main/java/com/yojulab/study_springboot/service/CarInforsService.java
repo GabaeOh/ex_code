@@ -54,6 +54,19 @@ public class CarInforsService {
         result.putAll(this.exselectSearch(dataMap));
         return result;
     }
+    
+        public Object update(Map dataMap) {
+        String sqlMapId = "CarInfors.update";
+        Object result = sharedDao.update(sqlMapId, dataMap);
+        return result;
+    }
+    public Object updateAndSelectSearch(String UNIQUE_ID, Map dataMap) {
+        dataMap.put("COMMON_CODE_ID", UNIQUE_ID); //유니크 아이디 받아와서 dataMap에 저장
+        HashMap result = new HashMap<>();
+        result.put("updateCount", this.update(dataMap));
+        result.putAll(this.exselectSearch(dataMap));
+        return result;
+    }
 
 
 
@@ -146,11 +159,7 @@ public class CarInforsService {
 //         return result;
 //     }
 
-//     public Object update(Map dataMap) {
-//         String sqlMapId = "CarInfors.update";
-//         Object result = sharedDao.update(sqlMapId, dataMap);
-//         return result;
-//     }
+
 
 
 

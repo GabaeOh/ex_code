@@ -1,5 +1,6 @@
 package com.yojulab.study_springboot.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,13 @@ public class CarInforsController {
         return modelAndView;
     }
     // INSERT
+    
+    @PostMapping("/insertForm")
+    public ModelAndView insertForm(@RequestParam Map params, ModelAndView modelAndView) {
+        modelAndView.setViewName("/WEB-INF/views/carinfor/InsertForm.jsp");
+        return  modelAndView;
+    }
+
     @PostMapping("/insertAndSelectSearch")
     public ModelAndView insertAndSelectSearch(@RequestParam Map params,
                              ModelAndView modelAndView) {
@@ -53,6 +61,29 @@ public class CarInforsController {
 
         return modelAndView;
     }
+
+
+    @PostMapping("/updateForm/{UNIQUE_ID}")
+    public ModelAndView update_Com(@PathVariable String UNIQUE_ID, @RequestParam Map params, ModelAndView modelAndView) {
+
+               modelAndView.setViewName("/WEB-INF/views/carinfor/UpdateForm.jsp");
+        return  modelAndView;
+    }
+    
+     @PostMapping("/updateAndSelectSearch/{UNIQUE_ID}")
+    public ModelAndView updateAndSelectSearch(@PathVariable String UNIQUE_ID, @RequestParam Map params, ModelAndView modelAndView) {
+        Object result = carInforsService.updateAndSelectSearch(UNIQUE_ID, params);
+
+        modelAndView.addObject("params", params);
+        modelAndView.addObject("result", result);
+        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
+
+        return modelAndView;
+    }
+
+    }
+
+
     // // create
     // @PostMapping("/insert")
     // public ResponseEntity insert(@RequestBody Map paramMap) {
@@ -60,11 +91,7 @@ public class CarInforsController {
     //     return ResponseEntity.ok().body(result);
     // }
 
-    @GetMapping("/insertForm")
-    public ModelAndView insertForm(@RequestParam Map params, ModelAndView modelAndView) {
-        modelAndView.setViewName("/WEB-INF/views/carinfor/InsertForm.jsp");
-        return  modelAndView;
-    }
+    
 
 
     // @GetMapping("/selectInUID")
@@ -155,4 +182,4 @@ public class CarInforsController {
     //     return ResponseEntity.ok().body(result);
     // }
 
-}
+
