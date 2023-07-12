@@ -64,9 +64,7 @@
                         <div class="col-md-8">
                             <button id="insertButton" class="btn btn-primary" formaction="/carInfor/insertForm" formmethod="post">InsertForm</button>
                         </div>
-                        <div class="col-md-8">
-                            <button id="updateButton" class="btn btn-primary" formaction="/carInfor/updateForm" formmethod="post">UpdateForm</button>
-                        </div>
+                       
                         <h2>Table</h2>
                         <table class="table">
                             <thead>
@@ -79,7 +77,7 @@
                                 </tr>
                             </thead>
                             <tbody id="carTableBody">
-                                <% ArrayList resultList=(ArrayList)result.get("resultList"); 
+                                 <% ArrayList resultList=(ArrayList)result.get("resultList"); 
                                     for(int i=0; i < resultList.size(); i=i+1){
                                         HashMap record=(HashMap)resultList.get(i); %>
                                     <tr>
@@ -87,6 +85,7 @@
                                             <%= record.get("NAME") %>
                                         </td>
                                         <td>
+                                            <button class="btn btn-none" formaction='/carInfor/selectDetail/<%= record.get("COMMON_CODE_ID") %>'>
                                             <%= record.get("COMMON_CODE_ID") %>
                                         </td>
                                         <td>
@@ -96,7 +95,7 @@
                                             <%= record.get("PARENT_COMMON_CODE_ID") %>
                                         </td>
                                         <td>
-                                            <button formaction='/carInfor/deleteAndSelectSearch/<%= record.get("COMMON_CODE_ID") %>' formmethod="post">Del</button>
+                                            <button formaction='/carInfor/deleteAndSelectSearch/<%= record.get("COMMON_CODE_ID") %>' formmethod="post">DEL</button>
                                         </td>
                                     </tr>
                                     <% } %>

@@ -1,6 +1,5 @@
 package com.yojulab.study_springboot.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,166 +19,77 @@ public class CarInforsController {
     @Autowired
     CarInforsService carInforsService;
 
-     @GetMapping("/exselectSearch")
-    public ModelAndView exselectSearch(@RequestParam Map params
-                            , ModelAndView modelAndView) {
-        Object result = carInforsService.exselectSearch(params);
-        modelAndView.addObject("params", params);
-        modelAndView.addObject("result", result);
-        
-        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
+    @GetMapping("/exselectSearch")
+    public ModelAndView exselectSearch(@RequestParam Map<String, String> params, ModelAndView modelAndView) {
+        // Map<String, String>으로 타입을 지정했으며, 파라미터의 이름과 값은 모두 문자열(String)로 처리
+        Object result = carInforsService.exselectSearch(params); // params 맵을 인자로 전달하여 검색 결과를 가져 옴
+
+        modelAndView.addObject("params", params); // params 맵을 "params"라는 이름으로 모델에 추가합니다. 이를 통해 JSP 페이지에서 해당 데이터에 접근
+        modelAndView.addObject("result", result);// 검색 결과(result)를 "result"라는 이름으로 모델에 추가합니다. 마찬가지로 JSP 페이지에서 해당 데이터에 접근
+        modelAndView.setViewName("/WEB-INF/views/list_map_ex.jsp"); // 모델과 뷰 정보를 포함한 ModelAndView 객체를 반환
         return modelAndView;
     }
 
-    // delete with MVC
+    // delete
     @PostMapping("/deleteAndSelectSearch/{UNIQUE_ID}")
     public ModelAndView deleteAndSelectSearch(@RequestParam Map params,
-                            @PathVariable String UNIQUE_ID , ModelAndView modelAndView) {
-        Object result = carInforsService.deleteAndSelectSearch(UNIQUE_ID, params); //호출 
-        modelAndView.addObject("params", params); //modelAndView 객체에 params와 result를 추가
+            @PathVariable String UNIQUE_ID, ModelAndView modelAndView) {
+        Object result = carInforsService.deleteAndSelectSearch(UNIQUE_ID, params); // 호출
+        modelAndView.addObject("params", params); // modelAndView 객체에 params와 result를 추가
         modelAndView.addObject("result", result);
 
-        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
+        modelAndView.setViewName("/WEB-INF/views/list_map_ex.jsp");
         return modelAndView;
     }
     // INSERT
-    
+
     @PostMapping("/insertForm")
     public ModelAndView insertForm(@RequestParam Map params, ModelAndView modelAndView) {
-        modelAndView.setViewName("/WEB-INF/views/carinfor/InsertForm.jsp");
-        return  modelAndView;
+        modelAndView.setViewName("/WEB-INF/views/InsertForm.jsp");
+        return modelAndView;
     }
 
     @PostMapping("/insertAndSelectSearch")
     public ModelAndView insertAndSelectSearch(@RequestParam Map params,
-                             ModelAndView modelAndView) {
+            ModelAndView modelAndView) {
         Object result = carInforsService.insertAndSelectSearch(params);
 
         modelAndView.addObject("params", params);
         modelAndView.addObject("result", result);
-        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
+        modelAndView.setViewName("/WEB-INF/views/list_map_ex.jsp");
 
         return modelAndView;
     }
 
-
+    // UPDATE
     @PostMapping("/updateForm/{UNIQUE_ID}")
-    public ModelAndView update_Com(@PathVariable String UNIQUE_ID, @RequestParam Map params, ModelAndView modelAndView) {
-
-               modelAndView.setViewName("/WEB-INF/views/carinfor/UpdateForm.jsp");
-        return  modelAndView;
+    public ModelAndView updateForm(@PathVariable String UNIQUE_ID, @RequestParam Map params,
+            ModelAndView modelAndView) {
+        modelAndView.setViewName("/WEB-INF/views/UpdateForm.jsp");
+        return modelAndView;
     }
-    
-     @PostMapping("/updateAndSelectSearch/{UNIQUE_ID}")
-    public ModelAndView updateAndSelectSearch(@PathVariable String UNIQUE_ID, @RequestParam Map params, ModelAndView modelAndView) {
+
+    @PostMapping("/updateAndSelectSearch/{UNIQUE_ID}")
+    public ModelAndView updateAndSelectSearch(@PathVariable String UNIQUE_ID, @RequestParam Map params,
+            ModelAndView modelAndView) {
         Object result = carInforsService.updateAndSelectSearch(UNIQUE_ID, params);
 
         modelAndView.addObject("params", params);
         modelAndView.addObject("result", result);
-        modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
+        modelAndView.setViewName("/WEB-INF/views/list_map_ex.jsp");
 
         return modelAndView;
     }
 
+    // 상세정보
+    @GetMapping("/selectDetail/{COMMON_CODE_ID}")
+    public ModelAndView selectDetail(@PathVariable String COMMON_CODE_ID, @RequestParam Map params,
+            ModelAndView modelAndView) {
+        Object result = carInforsService.selectDetail(COMMON_CODE_ID, params);
+        modelAndView.addObject("params", params);
+        modelAndView.addObject("result", result);
+        modelAndView.setViewName("/WEB-INF/views/DetailForm.jsp");
+        return modelAndView;
     }
-
-
-    // // create
-    // @PostMapping("/insert")
-    // public ResponseEntity insert(@RequestBody Map paramMap) {
-    //     Object result = carInforsService.insert(paramMap);
-    //     return ResponseEntity.ok().body(result);
-    // }
-
-    
-
-
-    // @GetMapping("/selectInUID")
-    // public ResponseEntity selectInUID(@RequestBody Map paramMap) {
-    //     Object result = null;
-    //     try {
-    //         result = carInforsService.selectInUID(paramMap);
-    //     } catch (Exception e) {
-    //         return ResponseEntity.badRequest().body(result);
-    //     }
-    //     return ResponseEntity.ok().body(result);
-    // }
-
-    // /selectSearch?search=YEAR&words=2020
-    // /selectSearch/CAR_NAME/소
-    // @GetMapping("/selectSearch")
-    // public ModelAndView selectSearch(@RequestParam Map params
-    //                         , ModelAndView modelAndView) {
-    //     Object result = carInforsService.selectSearch(params);
-    //     modelAndView.addObject("params", params);
-    //     modelAndView.addObject("result", result);
-        
-    //     modelAndView.setViewName("/WEB-INF/views/carinfor/list_map.jsp");
-    //     return modelAndView;
-    // }
-
-    // /selectSearch?search=YEAR&words=2020
-    // /exselectSearch/PARENT_COMMON_CODE_ID/
-    
-   
-    // create
-    // @PostMapping("/InsertForm")
-    // public ModelAndView insertAndSelectSearch(@RequestParam Map params,
-    //                         @PathVariable String UNIQUE_ID , ModelAndView modelAndView) {
-        
-    //     Object result = carInforsService.insertAndSelectSearch(UNIQUE_ID, params);
-    //     modelAndView.addObject("params", params);
-    //     modelAndView.addObject("result", result);
-    //     modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
-    //     return modelAndView;
-    // }
-
-
-    // delete with MVC
-    // @PostMapping("/delete")
-    // public ModelAndView delete(@RequestParam Map params
-    //                         , ModelAndView modelAndView) {
-    //     Object result = carInforsService.delete(params);
-    //     modelAndView.addObject("params", params);
-
-    //     modelAndView.setViewName("/WEB-INF/views/carinfor/list_map_ex.jsp");
-    //     return modelAndView;
-    // }
-
-    // @GetMapping("/selectAll/{CAR_INFOR_ID}")
-    // public ResponseEntity selectAll(@PathVariable String CAR_INFOR_ID) {
-    //     Object result = carInforsService.selectAll(CAR_INFOR_ID);
-    //     return ResponseEntity.ok().body(result);
-    // }
-
-    // // /selectDetail/CI002
-    // @GetMapping("/selectDetail/{CAR_INFOR_ID}")
-    // public ResponseEntity selectDetail(@PathVariable String CAR_INFOR_ID) {
-    //     Object result = carInforsService.selectDetail(CAR_INFOR_ID);
-    //     return ResponseEntity.ok().body(result);
-    // }
-
-
-
-    
-
-    // // update
-    // @PutMapping("/update")
-    // public ResponseEntity update(@RequestBody Map paramMap) {
-    //     Object result = carInforsService.update(paramMap);
-    //     return ResponseEntity.ok().body(result);
-    // }
-
-    // // 2PC create
-    // @PostMapping("/insertDouble")
-    // public ResponseEntity insertDouble(@RequestBody Map paramMap) {
-    //     Object result = null;
-    //     try {
-    //         result = carInforsService.insertDouble(paramMap);
-    //     } catch (Exception e) {
-    //         return ResponseEntity.badRequest().body(result);
-    //     }
-    //     return ResponseEntity.ok().body(result);
-    // }
-
-
+           
+    }
