@@ -24,6 +24,7 @@
                 <label class="form-label" for="name">NAME:</label>
                 <input class="form-control" type="text" id="name" name="NAME">
             </div>
+            <div>
                 <label class="form-label" for="description">DESCRIPTION:</label>
                 <input class="form-control" type="text" id="description" name="DESCRIPTION">
             </div>

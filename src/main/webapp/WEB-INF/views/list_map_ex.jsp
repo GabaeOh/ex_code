@@ -41,7 +41,7 @@
         String searchStr=(String)params.getOrDefault("search", ""); 
         HashMap result=(HashMap)request.getAttribute("result"); %>
         <!-- Main Content -->
-        <form action="" method="">
+        <form action="" method="post">
             <div class="container mt-4">
                 <div class="row">
                     <div class="col-md-8">
@@ -57,7 +57,7 @@
                             <input type="text" name="words" value='<%= params.getOrDefault("words", "") %>'
                                 class="form-control" placeholder="Search..." id="keydownEnter">
                             <button class="btn btn-primary" type="submit" formaction="/carInfor/exselectSearch"
-                                formmethod="get">Go</button>
+                                formmethod="post">Go</button>
                         </div>
                                               
                         <!-- Insert Form --> 
@@ -85,7 +85,7 @@
                                             <%= record.get("NAME") %>
                                         </td>
                                         <td>
-                                            <button class="btn btn-none" formaction='/carInfor/selectDetail/<%= record.get("COMMON_CODE_ID") %>'>
+                                            <button class="btn btn-none" formaction='/carInfor/selectDetail/<%= record.get("COMMON_CODE_ID") %>' formmethod="post">
                                             <%= record.get("COMMON_CODE_ID") %>
                                         </td>
                                         <td>

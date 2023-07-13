@@ -25,27 +25,28 @@
                HashMap result=(HashMap)request.getAttribute("result"); %>
             <div class="mb-3">
                 <label class="form-label" for="name">NAME:</label>
-                <input class="form-control" type="text" id="name" name="NAME" value="<%= result.get("NAME") %>">
+                <div class="form-control" id="name" name="NAME"><%= result.get("NAME") %></div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="description">DESCRIPTION:</label>
-                <input class="form-control" type="text" id="description" name="DESCRIPTION" value="<%= result.get("DESCRIPTION") %>">
+                <div class="form-control" id="description" name="DESCRIPTION"><%= result.get("DESCRIPTION") %></div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="system_code_yn">SYSTEM_CODE_YN:</label>
-                <input  class="form-control" type="text" id="system_code_yn" name="SYSTEM_CODE_YN" value="<%= result.get("SYSTEM_CODE_YN") %>">
+                <div class="form-control" id="system_code_yn" name="SYSTEM_CODE_YN"><%= result.get("SYSTEM_CODE_YN") %></div>
             </div>
-            
             <div class="mb-3">
                 <label class="form-label" for="use_yn">USE_YN:</label>
-                <input class="form-control" type="text" id="use_yn" name="USE_YN" value="<%= result.get("USE_YN") %>">
+                <div class="form-control" type="text" id="use_yn" name="USE_YN" ><%= result.get("USE_YN") %></div>
             </div>
             <div class="mb-3">
+
+                
                 <label class="form-label" for="parent_id"> PARENT_COMMON_CODE_ID:</label>
-                <input class="form-control" type="text" id="parent_id" name="PARENT_COMMON_CODE_ID" value="<%= result.get("PARENT_COMMON_CODE_ID") %>">
+                <div class="form-control" type="text" id="parent_id" name="PARENT_COMMON_CODE_ID"><%= result.get("PARENT_COMMON_CODE_ID") %></div>
             </div>
             <div class="text-center">
-                <button class="btn btn-primary" type="submit" formaction="/carInfor/exselectSearch">뒤로</button>
+                <button class="btn btn-primary" type="submit" formaction="/carInfor/exselectSearch" formmethod="get">뒤로</button>
                 <button class="btn btn-primary" formaction='/carInfor/updateForm/<%= result.get("COMMON_CODE_ID") %>'>updete</button>
             </div>
         </form>

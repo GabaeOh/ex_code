@@ -43,7 +43,7 @@ public class CarInforsController {
     }
     // INSERT
 
-    @PostMapping("/insertForm")
+    @GetMapping("/insertForm")
     public ModelAndView insertForm(@RequestParam Map params, ModelAndView modelAndView) {
         modelAndView.setViewName("/WEB-INF/views/InsertForm.jsp");
         return modelAndView;
@@ -82,7 +82,7 @@ public class CarInforsController {
     }
 
     // 상세정보
-    @GetMapping("/selectDetail/{COMMON_CODE_ID}")
+    @PostMapping("/selectDetail/{COMMON_CODE_ID}")
     public ModelAndView selectDetail(@PathVariable String COMMON_CODE_ID, @RequestParam Map params,
             ModelAndView modelAndView) {
         Object result = carInforsService.selectDetail(COMMON_CODE_ID, params);
