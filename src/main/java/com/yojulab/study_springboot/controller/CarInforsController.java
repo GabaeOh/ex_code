@@ -91,5 +91,16 @@ public class CarInforsController {
         modelAndView.setViewName("/WEB-INF/views/DetailForm.jsp");
         return modelAndView;
     }
-           
+        @PostMapping("/signAndList")
+    public ModelAndView signAndList(@RequestParam Map params,
+            ModelAndView modelAndView) {
+        Object result = carInforsService.insertAndSelectSearch(params);
+
+        modelAndView.addObject("params", params);
+        modelAndView.addObject("result", result);
+        modelAndView.setViewName("/WEB-INF/views/list_map_ex.jsp");
+
+        return modelAndView;
+    }
+
     }
