@@ -14,7 +14,7 @@ import com.yojulab.study_springboot.dao.SharedDao;
 public class CarInforsService {
     @Autowired
     SharedDao sharedDao;
-
+    //관리자
     public Map exselectSearch(Map dataMap) {
         // Object getOne(String sqlMapId, Object dataMap)
         String sqlMapId = "CarInfors.excode";
@@ -68,13 +68,34 @@ public class CarInforsService {
         return result;
     }
 
-    public Object selectDetail(String COMMON_CODE_ID, Map dataMap) {
+    public Object selectDetail(String ID, Map dataMap) {
         // Object getOne(String sqlMapId, Object dataMap)
         String sqlMapId = "CarInfors.detail";
-        dataMap.put("COMMON_CODE_ID", COMMON_CODE_ID); 
+        dataMap.put("ID", ID); 
         Object result = sharedDao.getOne(sqlMapId, dataMap);
         return result;
     }
+    // public Map common(Map dataMap) {
+    //     String sqlMapId = "CarInfors.list";
+
+    //     HashMap result = new HashMap<>();
+    //     result.put("resultList", sharedDao.getList(sqlMapId, dataMap));
+    //     return result;
+    // }
+
+    // public Object insert_Com(Map dataMap) {
+    //     Object result = null;
+    //     String sqlMapId = "CarInfors.insert_com";
+    //     if (!dataMap.get("COMMON_CODE_ID").equals("")) {
+    //         result = sharedDao.insert(sqlMapId, dataMap);
+    //     } else if (dataMap.get("COMMON_CODE_ID").equals("")) {
+    //         String uuid = commonUUID.Commons();
+    //         dataMap.put("COMMON_CODE_ID", uuid);
+    //         result = sharedDao.insert(sqlMapId, dataMap);
+    //     }
+    //     return result;
+    // }
 }
+
 
   

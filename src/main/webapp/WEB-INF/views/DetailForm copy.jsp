@@ -17,36 +17,37 @@
     </div>
     <div class="container">
         <form id="selectDetail" action="" method="post">
+            <div class="mb-3">
+                <input class="form-control" type="hidden" id="commonCodeId" name="COMMON_CODE_ID">
+            </div>
             <% HashMap params=(HashMap)request.getAttribute("params"); 
                String searchStr=(String)params.getOrDefault("search", ""); 
                HashMap result=(HashMap)request.getAttribute("result"); %>
             <div class="mb-3">
-                <label class="form-label" for="name">NAME : </label>
+                <label class="form-label" for="name">NAME:</label>
                 <div class="form-control" id="name" name="NAME"><%= result.get("NAME") %></div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="idid">아이디 : </label>
-                <div class="form-control" id="idid" name="ID" style="width: 500px;"><%= result.get("ID") %></div>
+                <label class="form-label" for="description">DESCRIPTION:</label>
+                <div class="form-control" id="description" name="DESCRIPTION"><%= result.get("DESCRIPTION") %></div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="idpw">비밀번호 : </label>
-                <div class="form-control" id="idpw" name="PASSWORD" style="width: 500px;"><%= result.get("PASSWORD") %></div>
+                <label class="form-label" for="system_code_yn">SYSTEM_CODE_YN:</label>
+                <div class="form-control" id="system_code_yn" name="SYSTEM_CODE_YN"><%= result.get("SYSTEM_CODE_YN") %></div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="idphonenumber">연락처 : </label>
-                <div class="form-control" type="text" name="PHONENUMBER" id="idphonenumber" style="width: 500px;"><%= result.get("PHONENUMBER") %></div>
+                <label class="form-label" for="use_yn">USE_YN:</label>
+                <div class="form-control" type="text" id="use_yn" name="USE_YN" ><%= result.get("USE_YN") %></div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="idaddress">주소</label>
-                <div class="form-control" type="text" name="ADDRESS" id="idaddress" style="width: 500px;"><%= result.get("ADDRESS") %></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label"  for="idemail">Email </label>
-                <div class="form-control" type="email" name="EMAIL" id="idemail" style="width: 500px;"><%= result.get("EMAIL") %></div>
+
+                
+                <label class="form-label" for="parent_id"> PARENT_COMMON_CODE_ID:</label>
+                <div class="form-control" type="text" id="parent_id" name="PARENT_COMMON_CODE_ID"><%= result.get("PARENT_COMMON_CODE_ID") %></div>
             </div>
             <div class="text-center">
-                <button class="btn btn-primary" type="submit" formaction="/main" formmethod="get">뒤로</button>
-                <button class="btn btn-primary" formaction='/main/updateForm/<%= result.get("ID") %>'>updete</button>
+                <button class="btn btn-primary" type="submit" formaction="/carInfor/exselectSearch" formmethod="get">뒤로</button>
+                <button class="btn btn-primary" formaction='/carInfor/updateForm/<%= result.get("COMMON_CODE_ID") %>'>updete</button>
             </div>
         </form>
     </div>

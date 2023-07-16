@@ -62,7 +62,7 @@
                                               
                         <!-- Insert Form --> 
                         <div class="col-md-8">
-                            <button id="insertButton" class="btn btn-primary" formaction="/carInfor/insertForm" formmethod="get">InsertForm</button>
+                            <button id="insertButton" class="btn btn-primary" formaction="/main/insertForm" formmethod="get">InsertForm</button>
                         </div>
                        
                         <h2>Table</h2>
@@ -85,7 +85,7 @@
                                             <%= record.get("NAME") %>
                                         </td>
                                         <td>
-                                            <button class="btn btn-none" formaction='/carInfor/selectDetail/<%= record.get("COMMON_CODE_ID") %>' formmethod="post">
+                                            <button class="btn btn-none" formaction='/main/selectDetail/<%= record.get("COMMON_CODE_ID") %>' formmethod="post">
                                             <%= record.get("COMMON_CODE_ID") %>
                                         </td>
                                         <td>

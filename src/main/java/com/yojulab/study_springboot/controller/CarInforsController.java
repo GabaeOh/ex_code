@@ -14,10 +14,21 @@ import org.springframework.web.servlet.ModelAndView;
 import com.yojulab.study_springboot.service.CarInforsService;
 
 @Controller
-@RequestMapping("/carInfor")
+@RequestMapping("/main")
+
+
+
+
 public class CarInforsController {
     @Autowired
     CarInforsService carInforsService;
+
+    @GetMapping({"", "/home"})
+    public ModelAndView main(ModelAndView modelAndView){
+        modelAndView.addObject("name", "Yojulab!");
+        modelAndView.setViewName("/WEB-INF/views/main.jsp");
+        return modelAndView;
+    }
 
     @GetMapping("/exselectSearch")
     public ModelAndView exselectSearch(@RequestParam Map<String, String> params, ModelAndView modelAndView) {
@@ -42,6 +53,12 @@ public class CarInforsController {
         return modelAndView;
     }
     // INSERT
+    @PostMapping("/insert")
+    public ModelAndView insert_Com(@RequestParam Map params, ModelAndView modelAndView) {
+
+        modelAndView.setViewName("/WEB-INF/views/main.jsp");
+        return modelAndView;
+    }
 
     @GetMapping("/insertForm")
     public ModelAndView insertForm(@RequestParam Map params, ModelAndView modelAndView) {
@@ -82,15 +99,16 @@ public class CarInforsController {
     }
 
     // 상세정보
-    @PostMapping("/selectDetail/{COMMON_CODE_ID}")
-    public ModelAndView selectDetail(@PathVariable String COMMON_CODE_ID, @RequestParam Map params,
+    @GetMapping("/selectDetail/{ID}")
+    public ModelAndView selectDetail(@PathVariable String ID, @RequestParam Map params,
             ModelAndView modelAndView) {
-        Object result = carInforsService.selectDetail(COMMON_CODE_ID, params);
+        Object result = carInforsService.selectDetail(ID, params);
         modelAndView.addObject("params", params);
         modelAndView.addObject("result", result);
         modelAndView.setViewName("/WEB-INF/views/DetailForm.jsp");
         return modelAndView;
     }
+    
         @PostMapping("/signAndList")
     public ModelAndView signAndList(@RequestParam Map params,
             ModelAndView modelAndView) {
@@ -104,3 +122,15 @@ public class CarInforsController {
     }
 
     }
+
+    // 상세정보
+    //     @PostMapping("/selectDetail/{COMMON_CODE_ID}")
+    // public ModelAndView selectDetail(@PathVariable String COMMON_CODE_ID, @RequestParam Map params,
+    //         ModelAndView modelAndView) {
+    //     Object result = carInforsService.selectDetail(COMMON_CODE_ID, params);
+    //     modelAndView.addObject("params", params);
+    //     modelAndView.addObject("result", result);
+    //     modelAndView.setViewName("/WEB-INF/views/DetailForm.jsp");
+    //     return modelAndView;
+    // }
+    

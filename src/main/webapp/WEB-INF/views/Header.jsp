@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bootstrap 5 Template</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
         <div class="container">
             <nav class="navbar navbar-expand">
                 <div class="navbar-brand">
@@ -30,10 +33,10 @@
                         data-bs-toggle="dropdown">회원관리</button><!--버튼 버튼색 버튼화살표토글 / 토글효과 : 드롭다운-->
                     <ul class="dropdown-menu">
                         <li class="dropdown-item">
-                            <a class="nav-link" href="mypage.html">마이페이지</a>
+                            <a class="nav-link" href="/main/selectDetail/{ID}">마이페이지</a>
                         </li>
                         <li class="dropdown-item">
-                            <a class="nav-link" href="/carInfor/insertForm">회원가입</a>
+                            <a class="nav-link" href="/main/insertForm">회원가입</a>
                         </li>
                         <li class="dropdown-divider"></li> <!--drowdown메뉴안에서 라인으로 나누기 -->
                         <li class="dropdown-item">
