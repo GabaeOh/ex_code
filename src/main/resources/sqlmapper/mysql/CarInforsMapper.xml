@@ -16,11 +16,11 @@
 	</select>
 
     <!-- 입력 -->
-    <insert id="insert" parameterType="Map">
-        insert into members
-        (ID,NAME,PASSWORD,PHONENUMBER,ADDRESS,EMAIL)
-        values
-        (#{ID},#{NAME},#{GENDER_UID},#{PASSWORD},#{PHONENUMBER},#{ADDRESS},#{EMAIL});
+   <insert id="insert" parameterType="Map">
+    insert into MEMBERS
+    (USER_ID, NAME, GENDER_UID, PASSWORD, PHONENUMBER, ADDRESS, EMAIL)
+    values
+    (#{USER_ID}, #{NAME}, #{GENDER_UID}, #{PASSWORD}, #{PHONENUMBER}, #{ADDRESS}, #{EMAIL});
     </insert>
 
      <!-- 삭제 -->

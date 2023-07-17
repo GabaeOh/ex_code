@@ -30,23 +30,22 @@
                     <label class="form-label">성별</label>
                 </div>   
                 <div>
-                    <input type="radio" name="GENDER_UID" value="남자" id="male">
+                    <input type="radio" name="GENDER_UID" value="G_01" id="male">
                     <label for="male">남자</label>
         
-                    <input type="radio" name="GENDER_UID" value="여자" id="female">
+                    <input type="radio" name="GENDER_UID" value="G_02" id="female">
                     <label for="female">여자</label>
                 </div>
                 <div>
 
                     <div class="py-2"><!--아이디 작성-->
                     <label class="form-label" for="idid">아이디 </label>
-                    <input class="form-control" type="id" name="ID" id="idid" placeholder="hyowon0605" style="width: 500px;">
+                    <input class="form-control" type="id" name="USER_ID" id="idid" style="width: 500px;">
                     </div>
         
                     <div class="py-2"><!--비밀번호 작성-->
                     <label class="form-label" for="idpw">비밀번호 </label>
-                    <input class="form-control" type="password" name="PASSWORD" id="idpassword" placeholder="123456"
-                        style="width: 500px;">
+                    <input class="form-control" type="password" name="PASSWORD" id="idpw" placeholder="123456" style="width: 500px;">
                     </div>
         
                     <div class="py-2"><!--비밀번호 확인란 작성-->

@@ -54,7 +54,7 @@ public class CarInforsController {
     }
     // INSERT
     @PostMapping("/insert")
-    public ModelAndView insert_Com(@RequestParam Map params, ModelAndView modelAndView) {
+    public ModelAndView insert(@RequestParam Map params, ModelAndView modelAndView) {
 
         modelAndView.setViewName("/WEB-INF/views/main.jsp");
         return modelAndView;
