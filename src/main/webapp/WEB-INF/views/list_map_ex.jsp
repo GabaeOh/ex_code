@@ -95,7 +95,7 @@
                                             <%= record.get("PARENT_COMMON_CODE_ID") %>
                                         </td>
                                         <td>
-                                            <button formaction='/carInfor/deleteAndSelectSearch/<%= record.get("COMMON_CODE_ID") %>' formmethod="post">DEL</button>
+                                            <button formaction='/main/deleteAndSelectSearch/<%= record.get("COMMON_CODE_ID") %>' formmethod="post">DEL</button>
                                         </td>
                                     </tr>
                                     <% } %>

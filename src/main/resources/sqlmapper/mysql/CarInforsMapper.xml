@@ -5,7 +5,7 @@
 	
     <select id="excode" parameterType="Map" resultType="Map">
         SELECT NAME, COMMON_CODE_ID, DESCRIPTION, PARENT_COMMON_CODE_ID
-        FROM db_cars.commons_code
+        FROM db_car.commons_code
         ORDER BY PARENT_COMMON_CODE_ID DESC;
         <choose>
             <when test="search == 'NAME'">

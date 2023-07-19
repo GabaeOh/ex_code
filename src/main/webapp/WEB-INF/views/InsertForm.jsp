@@ -30,10 +30,10 @@
                     <label class="form-label">성별</label>
                 </div>   
                 <div>
-                    <input type="radio" name="GENDER_UID" value="G_01" id="male">
+                    <input type="radio" name="GENDER_UID" value="G-01" id="male">
                     <label for="male">남자</label>
         
-                    <input type="radio" name="GENDER_UID" value="G_02" id="female">
+                    <input type="radio" name="GENDER_UID" value="G-02" id="female">
                     <label for="female">여자</label>
                 </div>
                 <div>
